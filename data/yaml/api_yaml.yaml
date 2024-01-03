@@ -1,0 +1,77 @@
+- actualResult: $..message
+  caseName: 成功调用登陆接口，msg返回登录成功
+  data:
+    clientId: 83YslrcMpBt3X3c0eK8jvhdPAW84ScHc
+    clientSecret: rosJtPuAMy69wnEMiw9UqRaQNELypEyk
+    loginIp: 113.240.251.66
+    password: 123456abcd
+    phoneLogin: '0'
+    username: '13627411667'
+  expectResult: success
+  featureName: F01_用户管理
+  headers: null
+  id: 0
+  jsonExData:
+    MSG: $.message
+    VAR_TOKEN: $..data.value
+  method: post
+  path: uaa/login/acct
+  rank: blocker
+  regularExData: null
+  remark: 用例登陆
+  result: 测试通过，断言成功。
+  storyName: F01S01_登陆
+  type: data
+  url: http://gateway.test.csbilin.com/
+- actualResult: $..message
+  caseName: 查看视频号列表，msg返回success
+  data:
+    accType: ''
+    closeEndTime: ''
+    closeStartTime: ''
+    endFansCount: ''
+    endPostVideoCount: ''
+    endTime: ''
+    groupId: 0
+    isClose: ''
+    isCompliance: ''
+    isExpire: ''
+    isGoodHaveHeating: ''
+    isHaveHeating: ''
+    isHaveShopCar: ''
+    isThousandFans: ''
+    isTruthVerify: ''
+    majorViolation:
+      end: ''
+      start: ''
+    minorViolation:
+      end: ''
+      start: ''
+    nickNameLike: ''
+    openEndTime: ''
+    openStartTime: ''
+    page: 1
+    selectContent: []
+    selectType: '2'
+    startFansCount: ''
+    startPostVideoCount: ''
+    startTime: ''
+    status: ''
+    videoType: ''
+    wxIsOnline: ''
+  expectResult: success
+  featureName: F01_视频号列表
+  headers:
+    Authorization: Bearer a8554fa4-8424-4dc9-a4c1-d3900b40217e
+    Content-Type: application/json
+  id: 1
+  jsonExData: null
+  method: post
+  path: jingtun-no-manage/videoAccInfo/pageVideoWxAllotInfo
+  rank: blocker
+  regularExData: null
+  remark: 查看视频号列表
+  result: 测试通过，断言成功。
+  storyName: F01S01_查看视频号列表
+  type: json
+  url: http://gateway.test.csbilin.com/
