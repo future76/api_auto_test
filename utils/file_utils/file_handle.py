@@ -27,7 +27,7 @@ def zip_file(in_path, out_path):
         logger.debug(f"目标路径:{in_path} 是一个目录，开始进行压缩......")
         # 写入
         # 压缩文件名    以时间为名
-        compressed_file_name = f'{out_path}test_report{time.strftime("%Y%m%d%H%M%S")}.zip'
+        compressed_file_name = f'{out_path}/test_report{time.strftime("%Y%m%d%H%M%S")}.zip'
 
         zip = zipfile.ZipFile(compressed_file_name, "w", zipfile.ZIP_DEFLATED)
         for path, dirnames, filenames in os.walk(in_path):

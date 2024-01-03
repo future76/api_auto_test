@@ -15,11 +15,15 @@ BASE_DIR = os.path.dirname(__file__)
 # 配置 allure程序包bin路径(环境变量)
 allure_path_bin = os.path.join(BASE_DIR, "common", "allure-2.13.5/bin")
 
+# 报告路径
+report_path = os.path.join(BASE_DIR, "report")
 # 临时报告的路径
 allure_temp_path = os.path.join(BASE_DIR, "report", "temp")
 #正式报告路径
 allure_report_path = os.path.join(BASE_DIR, "report", "allure_report")
-
+# 脱离allure服务的exe路径
+server_path = os.path.join(BASE_DIR, "common", "http_server.exe")
+bat_path = os.path.join(BASE_DIR, "utils", "report_utils/双击打开Allure报告3.bat")
 # 配置常量的文件
 # 环境变量
 # 正式环境
@@ -71,4 +75,4 @@ DB_NAME = 'shopxo_hctested'  # 数据库名称
 
 
 if __name__ == '__main__':
-    print(allure_temp_path,allure_report_path)
+    print(allure_temp_path, allure_report_path, server_path, bat_path,report_path, sep="\n")
