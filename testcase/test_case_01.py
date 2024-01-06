@@ -26,7 +26,7 @@ class TestCase:
     all_var = {}
 
     @pytest.mark.parametrize("CaseData", AllCaseData)
-    def testCase(self, CaseData):
+    def testCase(self, CaseData, token_fix):
         AllureReport.dynamic_title(CaseData)
         CaseData = eval(Template(str(CaseData)).render(self.all_var))
 
@@ -52,7 +52,10 @@ class TestCase:
                 data = json.loads(CaseData["data"]) if isinstance(CaseData["data"], str) else None
             else:
                 data = eval(CaseData["data"]) if isinstance(CaseData["data"], str) else None
-
+            # 优化当登录用例不执行时，保证后续用例执行，减少登录用例的执行
+            if headers is not None and (CaseData["is_token"] is True or CaseData["is_token"] is None):
+                headers['Authorization'] = token_fix[1]
+                print(f"-------------------{headers.get('Authorization')}--------------------------------")
             dict_data = {
                 "url": url,
                 "params": params,

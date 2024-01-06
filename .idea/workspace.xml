@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eadcfa02-a19d-488e-bc8b-1e75a492c8af" name="Changes" comment="处理文件相关操作" />
+    <list default="true" id="eadcfa02-a19d-488e-bc8b-1e75a492c8af" name="Changes" comment="将脱离allure服务复制，压缩文件，优化run">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704248941405</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="将脱离allure服务复制，压缩文件，优化run">
+      <created>1704273147996</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704273147996</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -243,6 +252,7 @@
     <MESSAGE value="更新http_server.exe" />
     <MESSAGE value="目录调整" />
     <MESSAGE value="处理文件相关操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="处理文件相关操作" />
+    <MESSAGE value="将脱离allure服务复制，压缩文件，优化run" />
+    <option name="LAST_COMMIT_MESSAGE" value="将脱离allure服务复制，压缩文件，优化run" />
   </component>
 </project>
