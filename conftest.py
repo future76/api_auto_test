@@ -22,12 +22,12 @@ from api_keyword.api_key import ApiKey
 @pytest.fixture(scope="session")
 def token_fix():
     ak = ApiKey()
-    url = "https://gateway.bilinl.com/uaa/login/acct"
+    url = "http://gateway.test.csbilin.com/uaa/login/acct"
     data = {
         "clientId": "83YslrcMpBt3X3c0eK8jvhdPAW84ScHc",
         "clientSecret": "rosJtPuAMy69wnEMiw9UqRaQNELypEyk",
         "loginIp": "113.240.251.66",
-        "username": "13627411831",
+        "username": "13627411667",
         "password": "123456abcd",
         "phoneLogin": "0"
     }
