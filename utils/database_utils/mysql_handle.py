@@ -63,6 +63,7 @@ class MysqlServer:
             # 关闭数据库链接和隧道
             self.close()
             return self.verify(data)
+            # return data
         except Exception as e:
             logger.error(f"查询所有符合sql条件的数据报错: {e}")
             raise e
@@ -80,6 +81,7 @@ class MysqlServer:
             # 关闭数据库链接和隧道
             self.close()
             return self.verify(data)
+            # return data
         except Exception as e:
             logger.error(f"查询符合sql条件的数据的第一条数据报错: {e}")
             raise e
@@ -143,16 +145,28 @@ class MysqlServer:
         # 如果开启了SSH隧道，则关闭
         if self.server:
             self.server.close()
-
-    def verify(self, result: dict) -> Union[dict, None]:
+    # 暂时注释掉
+    def verify(self, result):
         """验证结果能否被json.dumps序列化"""
         # 尝试变成字符串，解决datetime 无法被json 序列化问题
         try:
             json.dumps(result)
-        except TypeError:  # TypeError: Object of type datetime is not JSON serializable
-            for k, v in result.items():
-                if isinstance(v, datetime):
-                    result[k] = str(v)
+        except TypeError as e:  # TypeError: Object of type datetime is not JSON serializable
+            logger.info(f"datetime无法被json序列化：{e},接下来将datetime进行转换")
+            if isinstance(result, dict):
+                for k, v in result.items():
+                    if isinstance(v, datetime):
+                        result[k] = str(v)
+            elif isinstance(result, list):
+                for i in result:
+                    for k, v in i.items():
+                        if isinstance(v, datetime):
+                            i[k] = str(v)
+        # except AttributeError: # 'list' object has no attribute 'items'
+        #     for i in result:
+        #         for k, v in i.items():
+        #             if isinstance(v, datetime):
+        #                 result[k] = str(v)
         return result
 
 
@@ -171,6 +185,21 @@ if __name__ == '__main__':
         "ssh_user": "neighbour-ssh",
         "ssh_pwd": "&86JSeDw1Jb!I3nX"
     }
+
+    # --------------------------------------------------------------
+    # db_host = "pc-bp1avf10pbl2ygn49.rwlb.rds.aliyuncs.com"
+    # db_port = 3306
+    # db_user = "jingtun_read"
+    # db_pwd = "FnGZY1vk"
+    # db_database = "neighbour_jingtun"
+    # ssh = True
+    # ssh_info = {
+    #     "ssh_host": "47.114.181.194",
+    #     "ssh_port": 52666,
+    #     "ssh_user": "neighbour-ssh",
+    #     "ssh_pwd": "&86JSeDw1Jb!I3nX"
+    # }
+
     # ----------不需要走SSH隧道的数据库---------------
     # db_host = "127.0.0.1"
     # db_port = 3306
@@ -181,4 +210,5 @@ if __name__ == '__main__':
 
     db = MysqlServer(db_host, db_port, db_user, db_pwd, db_database, ssh,
                      **ssh_info)
-    print(db.query_one(sql="select * from igb_business_target_batch_record_reset ;"))
+    # print(db.query(sql="select * from ad_alias_number_batch ;",one=True))
+    print(db.query(sql="select * from igb_business_target_batch_record_reset ;",one=False))
